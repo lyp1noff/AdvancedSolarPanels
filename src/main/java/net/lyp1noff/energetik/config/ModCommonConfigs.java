@@ -1,4 +1,4 @@
-package com.lyp1noff.energetik.config;
+package net.lyp1noff.energetik.config;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 

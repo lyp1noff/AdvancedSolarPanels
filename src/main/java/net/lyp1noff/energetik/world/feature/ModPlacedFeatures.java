@@ -1,6 +1,6 @@
-package com.lyp1noff.energetik.world.feature;
+package net.lyp1noff.energetik.world.feature;
 
-import com.lyp1noff.energetik.config.ModCommonConfigs;
+import net.lyp1noff.energetik.config.ModCommonConfigs;
 import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.world.level.levelgen.VerticalAnchor;

@@ -1,7 +1,7 @@
-package com.lyp1noff.energetik;
+package net.lyp1noff.energetik;
 
-import com.lyp1noff.energetik.block.ModBlocks;
-import com.lyp1noff.energetik.item.ModItems;
+import net.lyp1noff.energetik.block.ModBlocks;
+import net.lyp1noff.energetik.item.ModItems;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -12,14 +12,14 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(energetik.MOD_ID)
-public class energetik
+@Mod(Energetik.MOD_ID)
+public class Energetik
 {
     // Directly reference a slf4j logger
     public static final String MOD_ID = "energetik";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public energetik()
+    public Energetik()
     {
         // Register the setup method for modloading
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();

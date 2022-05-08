@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "energetik:silver_ore",
+    "energetik:deepslate_silver_ore",
     "energetik:silver_block"
   ]
 }

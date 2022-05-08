@@ -1,8 +1,8 @@
-package com.lyp1noff.energetik.block;
+package net.lyp1noff.energetik.block;
 
-import com.lyp1noff.energetik.energetik;
-import com.lyp1noff.energetik.item.ModCreativeModeTab;
-import com.lyp1noff.energetik.item.ModItems;
+import net.lyp1noff.energetik.Energetik;
+import net.lyp1noff.energetik.item.ModCreativeModeTab;
+import net.lyp1noff.energetik.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -18,11 +18,12 @@ import java.util.function.Supplier;
 
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
-            DeferredRegister.create(ForgeRegistries.BLOCKS, energetik.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.BLOCKS, Energetik.MOD_ID);
 
     public static final RegistryObject<Block> SILVER_BLOCK = registerBlock("silver_block",
             () -> new Block(BlockBehaviour.Properties.of(Material.METAL).strength(4f).requiresCorrectToolForDrops()));
-
+    public static final RegistryObject<Block> DEEPSLATE_SILVER_ORE = registerBlock("deepslate_silver_ore",
+            () -> new Block(BlockBehaviour.Properties.of(Material.METAL).strength(3f).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> SILVER_ORE = registerBlock("silver_ore",
             () -> new Block(BlockBehaviour.Properties.of(Material.METAL).strength(3f).requiresCorrectToolForDrops()));
 

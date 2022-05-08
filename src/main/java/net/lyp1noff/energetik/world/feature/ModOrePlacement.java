@@ -1,4 +1,4 @@
-package com.lyp1noff.energetik.world.feature;
+package net.lyp1noff.energetik.world.feature;
 
 import net.minecraft.world.level.levelgen.placement.*;
 

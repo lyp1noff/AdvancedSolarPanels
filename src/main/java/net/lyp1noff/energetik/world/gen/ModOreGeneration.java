@@ -1,8 +1,7 @@
-package com.lyp1noff.energetik.world.gen;
+package net.lyp1noff.energetik.world.gen;
 
-import com.lyp1noff.energetik.world.feature.ModPlacedFeatures;
+import net.lyp1noff.energetik.world.feature.ModPlacedFeatures;
 import net.minecraft.core.Holder;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraftforge.event.world.BiomeLoadingEvent;

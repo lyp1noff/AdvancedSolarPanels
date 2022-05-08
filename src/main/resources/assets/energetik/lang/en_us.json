@@ -2,7 +2,9 @@
   "itemGroup.energetikTab": "Energetik",
 
   "block.energetik.silver_ore": "Silver Ore",
+  "block.energetik.deepslate_silver_ore": "Deepslate Silver Ore",
   "block.energetik.silver_block": "Silver Block",
 
-  "item.energetik.silver_ingot": "Silver Ingot"
+  "item.energetik.silver_ingot": "Silver Ingot",
+  "item.energetik.raw_silver": "Raw Silver"
 }

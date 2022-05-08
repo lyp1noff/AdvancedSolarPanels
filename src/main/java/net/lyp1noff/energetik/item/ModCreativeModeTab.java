@@ -1,4 +1,4 @@
-package com.lyp1noff.energetik.item;
+package net.lyp1noff.energetik.item;
 
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
