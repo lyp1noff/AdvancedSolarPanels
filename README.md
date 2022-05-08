@@ -1,1 +1,1 @@
-# AdvancedSolarPanels
+# Energetik MC Mod

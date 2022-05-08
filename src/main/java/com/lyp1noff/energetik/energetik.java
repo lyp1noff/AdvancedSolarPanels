@@ -1,6 +1,7 @@
-package com.lyp1noff.advancedsolarpanels;
+package com.lyp1noff.energetik;
 
-import com.lyp1noff.advancedsolarpanels.item.ModItems;
+import com.lyp1noff.energetik.block.ModBlocks;
+import com.lyp1noff.energetik.item.ModItems;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -11,19 +12,20 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(advancedSolarPanels.MOD_ID)
-public class advancedSolarPanels
+@Mod(energetik.MOD_ID)
+public class energetik
 {
     // Directly reference a slf4j logger
-    public static final String MOD_ID = "advancedsolarpanels";
+    public static final String MOD_ID = "energetik";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public advancedSolarPanels()
+    public energetik()
     {
         // Register the setup method for modloading
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(eventBus);
+        ModBlocks.register(eventBus);
 
         eventBus.addListener(this::setup);
 

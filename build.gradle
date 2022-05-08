@@ -20,8 +20,8 @@ apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
 
 version = '1.18.2-0.1.0'
-group = 'com.lyp1noff.advancedsolarpanels' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'advancedsolarpanels'
+group = 'com.lyp1noff.energetik' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'energetik'
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -64,10 +64,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'advancedsolarpanels'
+            property 'forge.enabledGameTestNamespaces', 'energetik'
 
             mods {
-                advancedsolarpanels {
+                energetik {
                     source sourceSets.main
                 }
             }
@@ -81,10 +81,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'advancedsolarpanels'
+            property 'forge.enabledGameTestNamespaces', 'energetik'
 
             mods {
-                advancedsolarpanels {
+                energetik {
                     source sourceSets.main
                 }
             }
@@ -109,10 +109,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'advancedsolarpanels'
+            property 'forge.enabledGameTestNamespaces', 'energetik'
 
             mods {
-                advancedsolarpanels {
+                energetik {
                     source sourceSets.main
                 }
             }
@@ -126,10 +126,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'advancedsolarpanels', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'energetik', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                advancedsolarpanels {
+                energetik {
                     source sourceSets.main
                 }
             }
@@ -173,7 +173,7 @@ dependencies {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "advancedsolarpanels",
+                "Specification-Title"     : "energetik",
                 "Specification-Vendor"    : "advancedsolarpanelssareus",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
