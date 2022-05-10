@@ -16,11 +16,11 @@ public class ModOreGeneration {
         base.add(ModPlacedFeatures.SILVER_ORE_PLACED);
 
         /*if(event.getCategory() == Biome.BiomeCategory.THEEND) {
-            base.add(ModPlacedFeatures.END_CITRINE_ORE_PLACED);
+            base.add(ModPlacedFeatures.END_SILVER_ORE_PLACED);
         }
 
         if(event.getCategory() == Biome.BiomeCategory.NETHER) {
-            base.add(ModPlacedFeatures.NETHER_CITRINE_ORE_PLACED);
+            base.add(ModPlacedFeatures.NETHER_SILVER_ORE_PLACED);
         }*/
     }
 }
