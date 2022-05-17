@@ -1,6 +1,12 @@
 {
-  "parent": "block/cube_all",
+  "parent": "block/cube",
   "textures": {
-    "all": "energetik:block/silver_block"
+    "down": "energetik:block/solar_panel_side",
+    "up": "energetik:block/solar_panel_top",
+    "north": "energetik:block/solar_panel_side",
+    "east": "energetik:block/solar_panel_side",
+    "south": "energetik:block/solar_panel_side",
+    "west": "energetik:block/solar_panel_side",
+    "particle": "energetik:block/solar_panel_side"
   }
 }

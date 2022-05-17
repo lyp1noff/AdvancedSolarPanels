@@ -18,7 +18,7 @@ import org.slf4j.Logger;
 public class Energetik
 {
     public static final String MOD_ID = "energetik";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public Energetik()
     {

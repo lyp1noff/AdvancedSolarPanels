@@ -1,73 +1,95 @@
 package net.lyp1noff.energetik.block.entity.custom;
 
 import net.lyp1noff.energetik.block.entity.ModBlockEntities;
+import net.lyp1noff.energetik.block.util.CustomEnergyStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.IntTag;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.WorldlyContainer;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ChestMenu;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.CapabilityEnergy;
-import net.minecraftforge.energy.EnergyStorage;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
-
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
 
 public class SolarPanelBlockEntity extends BlockEntity {
-    private final LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
+
+    public final CustomEnergyStorage energyStorage;
+    private final int capacity = 1000;
+    private final int baseEnergyProduction = 100;
+    private final int maxExtract = baseEnergyProduction;
+    private final LazyOptional<CustomEnergyStorage> energy;
+
     public SolarPanelBlockEntity(BlockPos pWorldPosition, BlockState pBlockState) {
         super(ModBlockEntities.SOLAR_PANEL_BLOCK_ENTITY.get(), pWorldPosition, pBlockState);
+        this.energyStorage = createEnergyStorage();
+        this.energy = LazyOptional.of(() -> this.energyStorage);
+    }
+    private CustomEnergyStorage createEnergyStorage() {
+        return new CustomEnergyStorage(this, this.capacity, 0, this.maxExtract, 0);
+    }
+    @Override
+    public void load(@NotNull CompoundTag tag) {
+        super.load(tag);
+        this.energyStorage.setEnergy(tag.getInt("Energy"));
     }
 
-    private final EnergyStorage energyStorage = new EnergyStorage(400000, 200, 200, 0) {
-        @Override
-        public int receiveEnergy(int maxReceive, boolean simulate) {
-            int retval = super.receiveEnergy(maxReceive, simulate);
-            if (!simulate) {
-                setChanged();
-                level.sendBlockUpdated(worldPosition, level.getBlockState(worldPosition), level.getBlockState(worldPosition), 2);
+    public int getEnergy() {
+        return this.energyStorage.getEnergyStored();
+    }
+
+    public void outputEnergy() {
+        if (this.energyStorage.getEnergyStored() >= this.maxExtract && this.energyStorage.canExtract()) {
+            for (final var direction : Direction.values()) {
+                final BlockEntity be = this.level.getBlockEntity(this.worldPosition.relative(direction));
+                if (be == null) {
+                    continue;
+                }
+
+                be.getCapability(CapabilityEnergy.ENERGY, direction.getOpposite()).ifPresent(storage -> {
+                    if (be != this && storage.getEnergyStored() < storage.getMaxEnergyStored()) {
+                        final int toSend = SolarPanelBlockEntity.this.energyStorage.extractEnergy(this.maxExtract,
+                                false);
+                        final int received = storage.receiveEnergy(toSend, false);
+                        SolarPanelBlockEntity.this.energyStorage.setEnergy(
+                                SolarPanelBlockEntity.this.energyStorage.getEnergyStored() + toSend - received);
+                    }
+                });
             }
-            return retval;
+        }
+    }
+
+    public void tick() {
+        outputEnergy();
+        float dayTime = level.getDayTime();
+        int energyProduction = 0;
+        if (dayTime > 0 && dayTime < 1000) {
+            energyProduction = (int) ((float) baseEnergyProduction / 1000 * dayTime);
+        } else if (dayTime >= 1000 && dayTime < 11000) {
+            energyProduction = baseEnergyProduction;
+        } else if (dayTime >= 11000 && dayTime < 12000) {
+            energyProduction = (int) (baseEnergyProduction - ((dayTime - 11000) / 1000 * baseEnergyProduction));
         }
 
-        @Override
-        public int extractEnergy(int maxExtract, boolean simulate) {
-            int retval = super.extractEnergy(maxExtract, simulate);
-            if (!simulate) {
-                setChanged();
-                level.sendBlockUpdated(worldPosition, level.getBlockState(worldPosition), level.getBlockState(worldPosition), 2);
-            }
-            return retval;
-        }
-    };
-
-    @Override
-    public <T> LazyOptional<T> getCapability(Capability<T> capability, @Nullable Direction facing) {
-        if (!this.remove && facing != null && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
-            return lazyItemHandler.cast();
-        if (!this.remove && capability == CapabilityEnergy.ENERGY)
-            return LazyOptional.of(() -> energyStorage).cast();
-        return super.getCapability(capability, facing);
+        energyStorage.setEnergy(energyStorage.getEnergyStored() + energyProduction);
     }
 
     @Override
-    public void setRemoved() {
-        super.setRemoved();
-//        for (LazyOptional<? extends IItemHandler> handler : handlers)
-//            handler.invalidate();
+    protected void saveAdditional(@NotNull CompoundTag tag) {
+        super.saveAdditional(tag);
+        tag.putInt("Energy", getEnergy());
+    }
+
+    public void update() {
+        requestModelDataUpdate();
+        setChanged();
+        if (this.level != null) {
+            this.level.setBlockAndUpdate(this.worldPosition, getBlockState());
+        }
+    }
+
+    @Override
+    public <T> @NotNull LazyOptional<T> getCapability(@NotNull Capability<T> cap, Direction side) {
+        return cap == CapabilityEnergy.ENERGY ? this.energy.cast() : super.getCapability(cap, side);
     }
 }
