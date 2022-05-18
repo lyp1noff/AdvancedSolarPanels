@@ -3,6 +3,7 @@
   "values": [
     "energetik:silver_ore",
     "energetik:deepslate_silver_ore",
-    "energetik:silver_block"
+    "energetik:silver_block",
+    "energetik:solar_panel"
   ]
 }

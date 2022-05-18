@@ -38,7 +38,6 @@ public class Energetik
 
     private void setup(final FMLCommonSetupEvent event)
     {
-        // some preinit code
-        LOGGER.info("HELLO FROM PREINIT");
+        LOGGER.info("Welcome at Palace of Culture Energetik");
     }
 }

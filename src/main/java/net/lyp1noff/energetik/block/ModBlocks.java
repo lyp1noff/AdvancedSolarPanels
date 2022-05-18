@@ -26,10 +26,10 @@ public class ModBlocks {
 
 
     public static final RegistryObject<Block> SILVER_BLOCK = registerBlock("silver_block", () -> new Block(
-            BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.METAL).strength(4f).requiresCorrectToolForDrops()
-    ), ModTabs.ENERGETIK_TAB);
-    public static final RegistryObject<Block> DEEPSLATE_SILVER_ORE = registerBlock("deepslate_silver_ore", () -> new Block(
-            BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.DEEPSLATE).strength(3f).requiresCorrectToolForDrops()
+            BlockBehaviour.Properties.of(Material.METAL)
+                    .sound(SoundType.METAL)
+                    .strength(4f)
+                    .requiresCorrectToolForDrops()
     ), ModTabs.ENERGETIK_TAB);
     public static final RegistryObject<Block> SILVER_ORE = registerBlock("silver_ore", () -> new Block(
             BlockBehaviour.Properties.of(Material.STONE)
@@ -37,8 +37,17 @@ public class ModBlocks {
                     .strength(3f)
                     .requiresCorrectToolForDrops()
     ), ModTabs.ENERGETIK_TAB);
+    public static final RegistryObject<Block> DEEPSLATE_SILVER_ORE = registerBlock("deepslate_silver_ore", () -> new Block(
+            BlockBehaviour.Properties.of(Material.STONE)
+                    .sound(SoundType.DEEPSLATE)
+                    .strength(3f)
+                    .requiresCorrectToolForDrops()
+    ), ModTabs.ENERGETIK_TAB);
     public static final RegistryObject<Block> SOLAR_PANEL = registerBlock("solar_panel", () -> new SolarPanelBlock(
-                    BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.METAL).strength(1f)
+            BlockBehaviour.Properties.of(Material.STONE)
+                    .sound(SoundType.METAL)
+                    .strength(1f)
+                    .requiresCorrectToolForDrops()
     ), ModTabs.ENERGETIK_TAB);
 
 

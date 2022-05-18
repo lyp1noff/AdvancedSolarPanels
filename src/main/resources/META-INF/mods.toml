@@ -29,7 +29,7 @@ displayName="Energetik" #mandatory
 # A file name (in the root of the mod JAR) containing a logo for display
 logoFile="energetik.png" #optional
 # A text field displayed in the mod UI
-credits="Thanks for this example mod goes to Java" #optional
+credits="Thanks for this example mod goes to Authors" #optional
 # A text field displayed in the mod UI
 authors="lyp1noff" #optional
 # The description text for the mod (multi line!) (#mandatory)

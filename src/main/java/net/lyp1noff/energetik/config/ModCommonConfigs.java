@@ -13,7 +13,7 @@ public class ModCommonConfigs {
         BUILDER.push("Configs for Energetik Mod");
 
         SILVER_ORE_VEINS_PER_CHUNK = BUILDER.define("Veins Per Chunk", 7);
-        SILVER_ORE_VEIN_SIZE = BUILDER.defineInRange("Vein Size", 9, 4, 20);
+        SILVER_ORE_VEIN_SIZE = BUILDER.defineInRange("Vein Size", 8, 4, 16);
 
         BUILDER.pop();
         SPEC = BUILDER.build();

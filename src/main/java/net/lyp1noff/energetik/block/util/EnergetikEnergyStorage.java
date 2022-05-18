@@ -3,25 +3,25 @@ package net.lyp1noff.energetik.block.util;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.energy.EnergyStorage;
 
-public class CustomEnergyStorage extends EnergyStorage {
+public class EnergetikEnergyStorage extends EnergyStorage {
     private final BlockEntity blockEntity;
 
-    public CustomEnergyStorage(BlockEntity blockEntity, int capacity) {
+    public EnergetikEnergyStorage(BlockEntity blockEntity, int capacity) {
         super(capacity);
         this.blockEntity = blockEntity;
     }
 
-    public CustomEnergyStorage(BlockEntity blockEntity, int capacity, int maxTransfer) {
+    public EnergetikEnergyStorage(BlockEntity blockEntity, int capacity, int maxTransfer) {
         super(capacity, maxTransfer);
         this.blockEntity = blockEntity;
     }
 
-    public CustomEnergyStorage(BlockEntity blockEntity, int capacity, int maxReceive, int maxExtract) {
+    public EnergetikEnergyStorage(BlockEntity blockEntity, int capacity, int maxReceive, int maxExtract) {
         super(capacity, maxReceive, maxExtract);
         this.blockEntity = blockEntity;
     }
 
-    public CustomEnergyStorage(BlockEntity blockEntity, int capacity, int maxReceive, int maxExtract, int energy) {
+    public EnergetikEnergyStorage(BlockEntity blockEntity, int capacity, int maxReceive, int maxExtract, int energy) {
         super(capacity, maxReceive, maxExtract, energy);
         this.blockEntity = blockEntity;
     }
