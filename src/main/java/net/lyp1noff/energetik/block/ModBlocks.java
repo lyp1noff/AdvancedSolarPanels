@@ -8,7 +8,6 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
@@ -45,7 +44,6 @@ public class ModBlocks {
     ), ModTabs.ENERGETIK_TAB);
     public static final RegistryObject<Block> SOLAR_PANEL = registerBlock("solar_panel", () -> new SolarPanelBlock(
             BlockBehaviour.Properties.of(Material.STONE)
-                    .sound(SoundType.METAL)
                     .strength(1f)
                     .requiresCorrectToolForDrops()
     ), ModTabs.ENERGETIK_TAB);
